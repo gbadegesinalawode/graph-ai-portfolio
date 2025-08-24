@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gbadegesin Alawode — Generative AI for Work & Research</title>
+  <style>
+    :root{
+      --bg-1:#0a0f28; /* deep navy */
+      --bg-2:#0e1e52; /* indigo */
+      --bg-3:#0a2a6a; /* blue */
+      --brand-1:#7dd3fc; /* sky */
+      --brand-2:#60a5fa; /* blue */
+      --brand-3:#a78bfa; /* violet */
+      --brand-4:#22d3ee; /* cyan */
+      --text-1:#eef2ff; /* near white */
+      --text-2:#b7c3ff; /* soft indigo */
+      --card:rgba(255,255,255,.06);
+      --card-2:rgba(255,255,255,.04);
+      --shadow:0 18px 60px rgba(2,8,23,.45);
+      --radius:22px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0; padding:0; scroll-behavior:smooth;}
+    body{
+      font-family: ui-sans-serif,system-ui,-apple-system,Segoe UI, Roboto, "Helvetica Neue", Arial;
+      color:var(--text-1);
+      background:
+        radial-gradient(1200px 800px at 80% -10%, #173b72 0%, transparent 60%),
+        radial-gradient(900px 500px at -10% 20%, #0e245b 0%, transparent 60%),
+        linear-gradient(135deg,var(--bg-1),var(--bg-2) 50%, var(--bg-3));
+      position:relative;
+      min-height:100vh;
+      overflow-x:hidden;
+    }
+    /* dotted grid overlay */
+    body::before{
+      content:""; position:fixed; inset:0; pointer-events:none; z-index:0; opacity:.18;
+      background:
+        radial-gradient(circle at 1px 1px, rgba(255,255,255,.22) 1px, transparent 1px) 0 0/22px 22px;
+      mask-image: linear-gradient(to bottom, black 20%, transparent 80%);
+    }
+
+    /* animated gradient utility */
+    .grad{background: linear-gradient(90deg, var(--brand-1), var(--brand-2), var(--brand-3), var(--brand-4));
+      -webkit-background-clip:text; background-clip:text; color:transparent; background-size:300% 300%; animation: gradientShift 18s ease infinite}
+    @keyframes gradientShift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+
+    /* NAV */
+    .nav{position:fixed; inset:0 0 auto 0; display:flex; align-items:center; justify-content:space-between; padding:14px 28px; z-index:50; backdrop-filter: blur(10px);}
+    .nav.scrolled{background: linear-gradient(180deg, rgba(9,14,35,.75), rgba(9,14,35,.55)); box-shadow: var(--shadow); border-bottom:1px solid rgba(255,255,255,.08)}
+    .brand{display:flex; align-items:center; gap:.7rem; font-weight:800; letter-spacing:.5px}
+    .brand .logo{width:38px; height:38px; display:grid; place-items:center; border-radius:12px; background: conic-gradient(from 220deg, var(--brand-2), var(--brand-3), var(--brand-1)); box-shadow:0 6px 22px rgba(96,165,250,.45)}
+    .brand span{font-size:1.05rem; color:#fff}
+    .nav a{color:var(--text-1); text-decoration:none; margin:0 .9rem; font-weight:600; opacity:.9}
+    .nav a:hover{opacity:1}
+    .btn{position:relative; display:inline-block; padding:.9rem 1.2rem; border-radius:999px; font-weight:800; text-decoration:none; border:1px solid rgba(255,255,255,.18); isolation:isolate}
+    .btn.primary{color:#061020; background: linear-gradient(90deg,var(--brand-2),var(--brand-3)); box-shadow: 0 10px 28px rgba(96,165,250,.45)}
+    .btn.ghost{background: rgba(255,255,255,.06); color:var(--text-1)}
+    .btn::after{content:""; position:absolute; inset:0; border-radius:inherit; background: linear-gradient(120deg, transparent 40%, rgba(255,255,255,.5) 50%, transparent 60%); filter: blur(6px); transform: translateX(-120%); transition: transform .8s}
+    .btn:hover::after{transform: translateX(120%)}
+
+    /* SECTIONS */
+    .section{position:relative; z-index:1; max-width:1160px; margin:0 auto; padding:100px 22px}
+    .mt-hero{margin-top:84px}
+    h1{font-size: clamp(2.2rem, 4vw + 1rem, 4rem); line-height:1.05; margin:0}
+    p.lead{color:var(--text-2); font-size: clamp(1rem, .9rem + .3vw, 1.25rem)}
+
+    /* HERO */
+    .hero{display:grid; grid-template-columns: 1.2fr .8fr; gap:36px; align-items:center}
+    .hero .panel{position:relative; background: linear-gradient(180deg, rgba(96,165,250,.10), rgba(167,139,250,.05)); border:1px solid rgba(255,255,255,.12); border-radius: var(--radius); padding:24px; box-shadow: var(--shadow); overflow:hidden}
+    .panel::before{content:""; position:absolute; inset:-2px; border-radius:inherit; padding:2px; background: linear-gradient(180deg, rgba(125,211,252,.6), rgba(167,139,250,.4)); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude;}
+    .ctas{display:flex; gap:12px; flex-wrap:wrap; margin-top:22px}
+    .stats{display:grid; grid-template-columns: repeat(3,1fr); gap:14px; margin-top:26px}
+    .stat{background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03)); border:1px solid rgba(255,255,255,.1); border-radius:16px; padding:14px 16px; text-align:center; box-shadow: var(--shadow)}
+    .stat b{font-size:1.15rem}
+
+    /* FLOATING ORBS */
+    .orbs{position:absolute; inset:0; pointer-events:none; overflow:hidden}
+    .orb{position:absolute; width:240px; height:240px; background: radial-gradient(closest-side, #7dd3fc66, transparent 70%); border-radius:50%; filter:blur(10px); animation: float 18s ease-in-out infinite}
+    .orb:nth-child(2){left:10%; top:20%; width:180px; height:180px; animation-duration:22s}
+    .orb:nth-child(3){right:6%; top:8%; width:280px; height:280px; animation-duration:26s}
+    @keyframes float{0%,100%{transform: translateY(0)}50%{transform: translateY(-18px)}}
+
+    /* CARDS */
+    .card{position:relative; background: radial-gradient(120% 120% at 0% 0%, rgba(125,211,252,.08), rgba(167,139,250,.06)), var(--card); border:1px solid rgba(255,255,255,.08); border-radius: var(--radius); padding:30px; box-shadow: var(--shadow)}
+    .card::before{content:""; position:absolute; inset:-1px; z-index:-1; border-radius:inherit; background: linear-gradient(135deg, rgba(125,211,252,.8), rgba(96,165,250,.4), rgba(167,139,250,.7)); filter: blur(12px); opacity:.35}
+    .grid-2{display:grid; grid-template-columns: 1.2fr .8fr; gap:28px}
+    .chips{display:flex; gap:10px; flex-wrap:wrap}
+    .chip{background: linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.06)); padding:8px 12px; border-radius:999px; border:1px solid rgba(255,255,255,.16); font-weight:700; color:#dbeafe}
+    ul.clean{margin:0; padding-left:1rem}
+
+    /* COURSE MODULES */
+    .kicker{letter-spacing:.22em; font-weight:900; color:#9db4ff; text-transform:uppercase; font-size:.8rem}
+    .modules{display:grid; grid-template-columns: repeat(auto-fit,minmax(230px,1fr)); gap:18px; margin-top:18px}
+    .module{position:relative; background: linear-gradient(180deg, rgba(96,165,250,.10), rgba(167,139,250,.05)); border:1px solid rgba(255,255,255,.12); border-radius:18px; padding:18px; overflow:hidden}
+    .module::after{content:""; position:absolute; inset:0; background: radial-gradient(100% 80% at 100% 0%, rgba(34,211,238,.16), transparent 60%); pointer-events:none}
+    .module h4{margin:.1rem 0 .4rem; font-size:1.07rem}
+    .module p{margin:.2rem 0; color:#c7d2fe; font-size:.93rem}
+
+    /* SUBMISSIONS */
+    .subs{display:grid; grid-template-columns: repeat(auto-fit, minmax(250px,1fr)); gap:18px}
+    .sub{position:relative; background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03)); border:1px solid rgba(255,255,255,.1); border-radius:16px; padding:20px; transition: transform .25s ease}
+    .sub:hover{transform: translateY(-6px)}
+    .sub h5{margin:.2rem 0 .6rem}
+    .sub a{color:var(--brand-1); text-decoration:none; font-weight:800}
+    .sub a:hover{text-decoration:underline}
+
+    /* WAVY SEPARATORS */
+    .wave{position:relative; height:80px; margin-top:-40px}
+    .wave svg{position:absolute; inset:0; width:100%; height:100%}
+
+    /* FOOTER */
+    footer{margin-top:40px; padding:42px 22px; text-align:center; color:#c7d2fe; background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.05)); border-top:1px solid rgba(255,255,255,.08)}
+
+    /* ACCESSIBILITY */
+    a:focus-visible, button:focus-visible{outline:3px solid #22d3ee; outline-offset:3px; border-radius:10px}
+
+    /* RESPONSIVE */
+    @media (max-width: 900px){
+      .hero{grid-template-columns: 1fr}
+      .grid-2{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <div class="brand">
+      <div class="logo" aria-hidden="true">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 2l8.66 5v10L12 22l-8.66-5V7L12 2z" fill="white" opacity=".9"/></svg>
+      </div>
+      <span>Gbadegesin Alawode</span>
+    </div>
+    <div>
+      <a href="#about" aria-label="About me">About</a>
+      <a href="#course" aria-label="About the course">Course</a>
+      <a href="#submissions" aria-label="Weekly submissions">Submissions</a>
+      <a class="btn ghost" href="#submissions">Jump to Weeks</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="section mt-hero" style="position:relative">
+    <div class="orbs"><div class="orb" style="left:60%; top:40%"></div><div class="orb"></div><div class="orb"></div></div>
+    <div class="hero">
+      <div>
+        <h1><span class="grad">Generative AI for Work & Research</span><br/>Portfolio</h1>
+        <p class="lead">Applying AI and no‑code automation to public health, research and knowledge management. Built during the 8‑week live cohort by GRAPH Courses (University of Geneva).</p>
+        <div class="ctas">
+          <a class="btn primary" href="#submissions">See Weekly Submissions</a>
+          <a class="btn ghost" href="sandbox:/mnt/data/Generative AI for Work & Research Productivity Brochure (2).pdf" target="_blank" rel="noopener">Course Brochure</a>
+        </div>
+        <div class="stats">
+          <div class="stat"><b>10+ years</b><div style="opacity:.85">Public health leadership</div></div>
+          <div class="stat"><b>100+ citations</b><div style="opacity:.85">Google Scholar</div></div>
+          <div class="stat"><b>Digital innovations</b><div style="opacity:.85">VoiceIT • mDairy • VibeSquare</div></div>
+        </div>
+      </div>
+      <div class="panel" aria-hidden="true">
+        <!-- Decorative constellation to echo the inspiration theme -->
+        <svg viewBox="0 0 520 420" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Tech constellation illustration">
+          <defs>
+            <linearGradient id="g" x1="0" x2="1">
+              <stop offset="0%" stop-color="#7dd3fc"/>
+              <stop offset="50%" stop-color="#60a5fa"/>
+              <stop offset="100%" stop-color="#a78bfa"/>
+            </linearGradient>
+            <radialGradient id="bg" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(0 0) rotate(45) scale(600 500)">
+              <stop stop-color="#60a5fa" stop-opacity=".14"/>
+              <stop offset="1" stop-color="#a78bfa" stop-opacity=".02"/>
+            </radialGradient>
+          </defs>
+          <rect x="0" y="0" width="520" height="420" rx="18" fill="url(#bg)"/>
+          <g fill="none" stroke="url(#g)" stroke-width="2" opacity=".9">
+            <polygon points="120,60 240,40 320,110 280,200 160,210 90,140"/>
+            <polygon points="340,160 420,140 470,200 430,280 340,260 300,200"/>
+            <polyline points="120,60 160,210 300,200 340,160 240,40 120,60" opacity=".6"/>
+          </g>
+          <g fill="#d1e9ff">
+            <circle cx="120" cy="60" r="5"/>
+            <circle cx="240" cy="40" r="5"/>
+            <circle cx="320" cy="110" r="5"/>
+            <circle cx="280" cy="200" r="5"/>
+            <circle cx="160" cy="210" r="5"/>
+            <circle cx="90" cy="140" r="5"/>
+            <circle cx="420" cy="140" r="5"/>
+            <circle cx="470" cy="200" r="5"/>
+            <circle cx="430" cy="280" r="5"/>
+            <circle cx="340" cy="260" r="5"/>
+            <circle cx="300" cy="200" r="5"/>
+            <circle cx="340" cy="160" r="5"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <div class="wave" aria-hidden="true">
+    <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+      <path d="M0,64 C240,128 480,0 720,64 C960,128 1200,32 1440,64 L1440,120 L0,120 Z" fill="url(#waveGrad)" opacity=".35"/>
+      <defs>
+        <linearGradient id="waveGrad" x1="0" x2="1">
+          <stop offset="0%" stop-color="#7dd3fc"/>
+          <stop offset="100%" stop-color="#a78bfa"/>
+        </linearGradient>
+      </defs>
+    </svg>
+  </div>
+
+  <!-- ABOUT ME -->
+  <section id="about" class="section">
+    <div class="kicker">About me</div>
+    <h2 class="grad" style="margin:.4rem 0 1.2rem">Gbadegesin O. Alawode</h2>
+    <div class="grid-2">
+      <div class="card">
+        <p>
+          Senior public health policy & management professional with cross‑cutting experience in HIV/AIDS programs, health financing, digital health innovation, knowledge management and communications. I design and lead technology‑enabled initiatives that create measurable social impact in underserved communities.
+        </p>
+        <ul class="clean">
+          <li>Digital Innovation & Product Lead on USAID ICHSSA‑2 ($19M) — launched <b>VibeSquare</b> (WhatsApp virtual space) and the <b>Tech4AYP</b> digital skills program.</li>
+          <li>Won >$40k for social impact solutions including <b>VoiceIT</b> and <b>mDairy</b>.</li>
+          <li>Published researcher with <b>100+ citations</b> on Google Scholar.</li>
+        </ul>
+        <div class="chips" style="margin-top:12px">
+          <span class="chip">Policy & Financing</span>
+          <span class="chip">Digital Health</span>
+          <span class="chip">GenAI for Social Impact</span>
+          <span class="chip">Knowledge Management</span>
+        </div>
+      </div>
+      <div class="card">
+        <p class="kicker">Selected links</p>
+        <p><a class="btn ghost" href="https://scholar.google.com/citations?user=wPbMg00AAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a></p>
+        <p><a class="btn ghost" href="https://orcid.org/0000-0002-4646-3444" target="_blank" rel="noopener">ORCID</a></p>
+        <p><a class="btn ghost" href="https://thegraphcourses.org" target="_blank" rel="noopener">GRAPH Courses</a></p>
+        <p style="opacity:.78; margin-top:8px">(Email intentionally omitted to reduce spam.)</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="wave" aria-hidden="true">
+    <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+      <path d="M0,64 C240,128 480,0 720,64 C960,128 1200,32 1440,64 L1440,120 L0,120 Z" fill="url(#waveGrad)" opacity=".35"/>
+    </svg>
+  </div>
+
+  <!-- ABOUT COURSE -->
+  <section id="course" class="section">
+    <div class="kicker">About the course</div>
+    <h2 class="grad" style="margin:.4rem 0 1.2rem">8‑Week Live Cohort — No‑Code AI for Workflows</h2>
+    <div class="card">
+      <p class="lead">A practical program by GRAPH Courses (University of Geneva) combining weekly live workshops, help sessions, community forums, personalized feedback, capstone coaching and a shareable certificate. Focus: using LLMs and AI tools to automate tasks, analyze data, synthesize literature and communicate research.</p>
+      <div class="modules">
+        <div class="module"><h4>1. Websites, Docs & Presentations</h4><p>LLM basics; generate Markdown/LaTeX/HTML; build simple research sites; AI presentation tools.</p></div>
+        <div class="module"><h4>2. AI‑Automated Data Analysis</h4><p>Code Interpreter, Julius, TheBricks; dashboards, batch processing and reports.</p></div>
+        <div class="module"><h4>3. GenAI for Research & Text</h4><p>Literature reviews with Elicit/LiteRev; classification, sentiment & knowledge maps.</p></div>
+        <div class="module"><h4>4. Custom GPTs & Chatbots</h4><p>Chat architecture, context windows & RAG; Botpress; knowledge base integration.</p></div>
+        <div class="module"><h4>5. AI for Task Automation</h4><p>Email flows, browser agents and multi‑step automation strategies.</p></div>
+        <div class="module"><h4>6. Communication & Outreach</h4><p>AI summaries, scientific figures, video abstracts and content scheduling.</p></div>
+        <div class="module"><h4>7. Capstone & Showcase</h4><p>Project progress checks, peer reviews and final presentation.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wave" aria-hidden="true">
+    <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+      <path d="M0,64 C240,128 480,0 720,64 C960,128 1200,32 1440,64 L1440,120 L0,120 Z" fill="url(#waveGrad)" opacity=".35"/>
+    </svg>
+  </div>
+
+  <!-- SUBMISSIONS -->
+  <section id="submissions" class="section">
+    <div class="kicker">My weekly submissions</div>
+    <h2 class="grad" style="margin:.4rem 0 1.2rem">Deliverables & Demos</h2>
+    <div class="subs">
+      <div class="sub"><h5>Week 1 — Websites & Docs</h5><p>Research site scaffolding with Markdown & HTML outputs.</p><a href="#">Add link →</a></div>
+      <div class="sub"><h5>Week 2 — Data Analysis</h5><p>Automated report with Code Interpreter and Julius.</p><a href="#">Add link →</a></div>
+      <div class="sub"><h5>Week 3 — Text Analytics</h5><p>Literature synthesis + sentiment analysis pipeline.</p><a href="#">Add link →</a></div>
+      <div class="sub"><h5>Week 4 — Custom GPT / RAG</h5><p>Domain assistant with retrieval augmentation.</p><a href="#">Add link →</a></div>
+      <div class="sub"><h5>Week 5 — Automations</h5><p>Browser agent + email response flows.</p><a href="#">Add link →</a></div>
+      <div class="sub"><h5>Week 6 — Outreach</h5><p>AI‑generated figures & video abstract.</p><a href="#">Add link →</a></div>
+      <div class="sub"><h5>Week 7 — Capstone Check</h5><p>Iteration, feedback and evaluation rubric alignment.</p><a href="#">Add link →</a></div>
+      <div class="sub"><h5>Week 8 — Final Showcase</h5><p>Public demo and project poster.</p><a href="#">Add link →</a></div>
+    </div>
+  </section>
+
+  <footer>
+    <div>© <span id="year"></span> Gbadegesin O. Alawode — Generative AI Portfolio</div>
+  </footer>
+
+  <script>
+    // year
+    document.getElementById('year').textContent = new Date().getFullYear();
+    // nav background on scroll
+    const nav = document.getElementById('nav');
+    const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 8);
+    document.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+  </script>
+</body>
+</html>
