@@ -118,6 +118,16 @@
     /* FOOTER */
     footer{margin-top:40px; padding:42px 22px; text-align:center; color:#c7d2fe; background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.05)); border-top:1px solid rgba(255,255,255,.08)}
 
+    /* LIGHT STRIP (inspired by insurance layout) */
+    .section-light{ background: linear-gradient(180deg,#ffffff,#f6f9ff); color:#0b1530; border-top:1px solid rgba(2,8,23,.06); border-bottom:1px solid rgba(2,8,23,.06); }
+    .section-light .grad{ -webkit-text-fill-color: initial; color:#0b1530; background:none; }
+    .reasons{ display:grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap:18px; margin-top:18px }
+    .reason{ background:#ffffff; border:1px solid rgba(2,8,23,.06); border-radius:18px; padding:18px; box-shadow: 0 8px 24px rgba(2,8,23,.06) }
+    .icon-round{ width:52px; height:52px; border-radius:999px; display:grid; place-items:center; background:linear-gradient(135deg,#e0f2fe,#eef2ff); border:1px solid rgba(2,8,23,.06); margin-bottom:10px }
+    .btn.accent{ background: linear-gradient(90deg, #34d399, #22c55e); color:#062014; box-shadow:0 10px 24px rgba(34,197,94,.35); border-color: rgba(34,197,94,.5) }
+    .section-light .kicker{ color:#2563eb }
+    .section-light a{ color:#0a4fd1 }
+
     /* ACCESSIBILITY */
     a:focus-visible, button:focus-visible{outline:3px solid #22d3ee; outline-offset:3px; border-radius:10px}
 
@@ -157,6 +167,7 @@
         <p class="lead">Applying AI and no‑code automation to public health, research and knowledge management. Built during the 8‑week live cohort by GRAPH Courses (University of Geneva).</p>
         <div class="ctas">
           <a class="btn primary" href="#submissions">See Weekly Submissions</a>
+          <a class="btn accent" href="#reasons">Why this course</a>
           <a class="btn ghost" href="sandbox:/mnt/data/Generative AI for Work & Research Productivity Brochure (2).pdf" target="_blank" rel="noopener">Course Brochure</a>
         </div>
         <div class="stats">
@@ -216,7 +227,49 @@
     </svg>
   </div>
 
-  <!-- ABOUT ME -->
+  <section id="reasons" class="section section-light">
+    <div class="kicker">5 reasons to join</div>
+    <h2 class="grad" style="margin:.4rem 0 1.2rem">One Course to Meet Your Needs</h2>
+    <div class="reasons">
+      <div class="reason">
+        <div class="icon-round" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 12.5l4 3.5L19 7" stroke="#2563eb" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h4>Weekly live workshops</h4>
+        <p>Hands‑on practice to build real skills fast.</p>
+      </div>
+      <div class="reason">
+        <div class="icon-round" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21 15a4 4 0 00-4-4H7a4 4 0 000 8h6l4 3v-3a4 4 0 004-4z" stroke="#0ea5e9" stroke-width="2"/></svg>
+        </div>
+        <h4>Live help sessions</h4>
+        <p>Get unstuck quickly with instructor support.</p>
+      </div>
+      <div class="reason">
+        <div class="icon-round" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 12a5 5 0 110-10 5 5 0 010 10zM2 22a10 10 0 0120 0" stroke="#22c55e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h4>Private community</h4>
+        <p>Collaborate, share wins, and learn with peers.</p>
+      </div>
+      <div class="reason">
+        <div class="icon-round" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 8v8m-4-4h8M4 4h16v16H4z" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h4>Personalized feedback</h4>
+        <p>Actionable reviews to improve each submission.</p>
+      </div>
+      <div class="reason">
+        <div class="icon-round" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 3l2.4 4.9 5.4.8-3.9 3.8.9 5.4L12 15.9 7.2 18l1-5.4L4.3 8.7l5.4-.8L12 3z" stroke="#0ea5e9" stroke-width="1.6"/><path d="M8 20h8l-4 2-4-2z" fill="#34d399" opacity=".5"/></svg>
+        </div>
+        <h4>Capstone coaching & certificate</h4>
+        <p>Guided final project and a shareable credential.</p>
+      </div>
+    </div>
+  </section>
+
+  $1
   <section id="about" class="section">
     <div class="kicker">About me</div>
     <h2 class="grad" style="margin:.4rem 0 1.2rem">Gbadegesin O. Alawode</h2>
@@ -284,7 +337,7 @@
     <div class="subs">
       <div class="sub"><h5>Week 1 — Websites & Docs</h5><p>Research site scaffolding with Markdown & HTML outputs.</p><a href="#">Add link →</a></div>
       <div class="sub"><h5>Workshop 2 — Automated Data Analysis</h5><p>Analyzed Gapminder data to explore relationships between two global indicators (Daily Income and Life Expectancy for the Year 2020) using AI tools.</p><a href="https://github.com/gbadegesinalawode/graph-ai-portfolio/blob/main/Analysis%20and%20Comparison%20of%20World%20Map%20Data%20on%20Daily%20Income%20and%20Life%20Expectancy_Gbadegesin%20Alawode_24%20August%202025.pdf" target="_blank" rel="noopener">Open report →</a></div>
-      <div class="sub"><h5>Week 3 — Text Analytics</h5><p>Literature synthesis + sentiment analysis pipeline.</p><a href="#">Add link →</a></div>
+      <div class="sub"><h5>Workshop 3 — Automated Data Analysis</h5><p>Data Analyst Job Market Analysis to generate a scatter plot and box plot of minimum years of experience vs median salary estimate (USD) and programming language requirements vs salary distributions respectively using AI tools.</p><a href="https://github.com/gbadegesinalawode/graph-ai-portfolio/blob/main/Data%20Analyst%20Job%20Market%20Analysis_Week%203_Gbadegesin%20Alawode.pdf" target="_blank" rel="noopener">Open report →</a></div>
       <div class="sub"><h5>Week 4 — Custom GPT / RAG</h5><p>Domain assistant with retrieval augmentation.</p><a href="#">Add link →</a></div>
       <div class="sub"><h5>Week 5 — Automations</h5><p>Browser agent + email response flows.</p><a href="#">Add link →</a></div>
       <div class="sub"><h5>Week 6 — Outreach</h5><p>AI‑generated figures & video abstract.</p><a href="#">Add link →</a></div>
