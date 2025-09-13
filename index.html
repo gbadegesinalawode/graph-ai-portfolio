@@ -66,6 +66,24 @@
     .chips{display:flex; gap:8px; flex-wrap:wrap}
     .chip{background:#f1f5f9; border:1px solid var(--line); border-radius:999px; padding:8px 12px; font-weight:700; color:#1f2937}
 
+    /* MEDIA TAGS & LINK LISTS */
+    .tags{display:flex; gap:8px; flex-wrap:wrap; margin:.4rem 0 .2rem}
+    .tag{font-weight:800; font-size:.78rem; border:1px solid var(--line); border-radius:999px; padding:.28rem .6rem}
+    .tag.media{background:#eff6ff; color:#1d4ed8}
+    .tag.innovation{background:#ecfeff; color:#0ea5e9}
+    .tag.oped{background:#fff7ed; color:#ea580c}
+    .tag.poster{background:#f5f3ff; color:#6d28d9}
+    .tag.research{background:#eef2ff; color:#3730a3}
+    .tag.case{background:#f0fdf4; color:#16a34a}
+    .tag.conference{background:#fdf4ff; color:#a21caf}
+    .tag.award{background:#fffbeb; color:#b45309}
+
+    .links{list-style:none; padding:0; margin:.35rem 0 0; display:grid; gap:6px}
+    .links li{display:flex; align-items:center; gap:8px}
+    .links img{width:16px; height:16px; border-radius:4px; border:1px solid var(--line)}
+    .links a{color:var(--accent); font-weight:800; text-decoration:none}
+    .links a:hover{text-decoration:underline}
+
     /* MODULES */
     .modules{display:grid; grid-template-columns: repeat(auto-fit,minmax(230px,1fr)); gap:16px; margin-top:16px}
     .module{background:#fff; border:1px solid var(--line); border-radius:14px; padding:16px; box-shadow:var(--shadow)}
@@ -98,6 +116,7 @@
       <a href="#about">About</a>
       <a href="#course">Course</a>
       <a href="#submissions">Submissions</a>
+      <a href="#media">Media &amp; Publications</a>
       <a class="btn ghost" href="sandbox:/mnt/data/Generative AI for Work & Research Productivity Brochure (2).pdf" target="_blank" rel="noopener">Brochure</a>
       <div class="avatar" aria-label="Portrait of Gbadegesin Alawode">
         <img src="https://raw.githubusercontent.com/gbadegesinalawode/graph-ai-portfolio/main/Gbade_Headshot_Picture.jpg" alt="Gbadegesin Alawode headshot" loading="lazy" />
@@ -111,7 +130,8 @@
       <div>
         <span class="badge">Generative AI Portfolio</span>
         <h1>Hi. I'm Gbadegesin Alawode, MPH, B.TECH</h1>
-        <p class="lead">I work at the intersection of Public Health, Research, Design &amp; Innovation and Social Entrepreneurship to create sustainable solutions to pressing developmental challenges!!! I am passionate about AI and Data Science to simplify complex data for policy, informed-decisions, program planning and resource allocation. <b>See my AI work and Research portfolio:</b> A clean, practical showcase of how I use no‑code AI tools to automate analysis, synthesize knowledge, and communicate insights.</p>
+        <p class="lead">I work at the intersection of Public Health, Research, Design &amp; Innovation and Social Entrepreneurship to create sustainable solutions to pressing developmental challenges!!! I am passionate about AI and Data Science to simplify complex data for policy, informed-decisions, program planning and resource allocation.</p>
+        <p class="lead">See my AI work and Research portfolio: A clean, practical showcase of how I use no‑code AI tools to automate analysis, synthesize knowledge, and communicate insights.</p>
         <div class="list">
           <div class="row">
             <svg viewBox="0 0 24 24" width="22" height="22"><path d="M5 12.5l4 3.5L19 7" fill="none" stroke="var(--accent)" stroke-width="2.4" stroke-linecap="round"/></svg>
@@ -229,6 +249,77 @@
       <div class="sub"><h3 style="margin:0 0 .4rem">Week 6 — Outreach</h3><p>AI‑generated figures & video abstract.</p><a href="#">Add link →</a></div>
       <div class="sub"><h3 style="margin:0 0 .4rem">Week 7 — Capstone Check</h3><p>Iteration, feedback and evaluation rubric alignment.</p><a href="#">Add link →</a></div>
       <div class="sub"><h3 style="margin:0 0 .4rem">Week 8 — Final Showcase</h3><p>Public demo and project poster.</p><a href="#">Add link →</a></div>
+    </div>
+  </section>
+
+  <!-- MEDIA & PUBLICATIONS -->
+  <section id="media" class="section" style="background:#fff; border-top:1px solid var(--line); border-bottom:1px solid var(--line)">
+    <h2>Media &amp; Publications</h2>
+
+    <h3 style="margin-top:.5rem">Media Coverage &amp; Innovations</h3>
+    <div class="subs">
+      <div class="sub">
+        <h4 style="margin:0 0 .4rem">VoiceIT</h4>
+        <div class="tags"><span class="tag media">Media</span><span class="tag innovation">Innovation</span></div>
+        <p>An AI-enabled platform encouraging reporting of sexual and gender-based violence.</p>
+        <ul class="links">
+          <li><img src="https://www.google.com/s2/favicons?domain=voiceit.africa&sz=32" alt=""> <a href="https://voiceit.africa" target="_blank" rel="noopener">Website</a></li>
+          <li><img src="https://www.google.com/s2/favicons?domain=punchng.com&sz=32" alt=""> <a href="https://punchng.com/health-practitioner-creates-app-to-tackle-gbv/" target="_blank" rel="noopener">Punch feature</a></li>
+          <li><img src="https://www.google.com/s2/favicons?domain=techpoint.africa&sz=32" alt=""> <a href="https://techpoint.africa/2023/11/27/voiceit-encourages-sgbv-reporting/" target="_blank" rel="noopener">Techpoint Africa</a></li>
+        </ul>
+      </div>
+      <div class="sub">
+        <h4 style="margin:0 0 .4rem">mDairy</h4>
+        <div class="tags"><span class="tag media">Media</span><span class="tag innovation">Innovation</span></div>
+        <p>Digital platform improving efficiency and inclusion in Nigeria's dairy value chain.</p>
+        <ul class="links">
+          <li><img src="https://www.google.com/s2/favicons?domain=mdairy.com.ng&sz=32" alt=""> <a href="https://mdairy.com.ng" target="_blank" rel="noopener">Website</a></li>
+          <li><img src="https://www.google.com/s2/favicons?domain=2scale.org&sz=32" alt=""> <a href="https://www.2scale.org/en/updates/innovating-the-inclusion-of-female-farmers-in-the-dairy-sector-in-nigeria-en" target="_blank" rel="noopener">IFDC 2SCALE feature</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <h3 style="margin-top:1.2rem">Publications, Posters &amp; Case Studies</h3>
+    <div class="subs">
+      <div class="sub">
+        <h4 style="margin:0 0 .4rem">Why Africa Needs Universal Health Coverage</h4>
+        <div class="tags"><span class="tag oped">Op‑ed</span></div>
+        <p>Opinion piece advocating for UHC in Africa.</p>
+        <ul class="links">
+          <li><img src="https://www.google.com/s2/favicons?domain=allafrica.com&sz=32" alt=""> <a href="https://allafrica.com/stories/201809200034.html" target="_blank" rel="noopener">AllAfrica</a></li>
+          <li><img src="https://www.google.com/s2/favicons?domain=blueprint.ng&sz=32" alt=""> <a href="https://www.blueprint.ng/why-africa-needs-universal-health-coverage-by-alawode-gbadegesin-oyewole/" target="_blank" rel="noopener">Blueprint</a></li>
+        </ul>
+      </div>
+      <div class="sub">
+        <h4 style="margin:0 0 .4rem">Pediatrics &amp; HIV — Accepted Posters</h4>
+        <div class="tags"><span class="tag poster">Poster</span><span class="tag research">Research</span><span class="tag conference">Conference</span></div>
+        <p>16th International Workshop on Pediatrics &amp; HIV (Munich).</p>
+        <ul class="links">
+          <li><img src="https://www.google.com/s2/favicons?domain=arfh-ng.org&sz=32" alt=""> <a href="https://arfh-ng.org/wp-content/uploads/2024/07/CoP_Poster_Update_1-1.pdf" target="_blank" rel="noopener">HPV co‑infection prevention</a></li>
+          <li><img src="https://www.google.com/s2/favicons?domain=arfh-ng.org&sz=32" alt=""> <a href="https://arfh-ng.org/wp-content/uploads/2024/07/DSI_Poster_Update_2.pdf" target="_blank" rel="noopener">Optimizing adolescent outcomes</a></li>
+        </ul>
+      </div>
+      <div class="sub">
+        <h4 style="margin:0 0 .4rem">ICASA 2023 Case Study</h4>
+        <div class="tags"><span class="tag case">Case study</span><span class="tag conference">Conference</span></div>
+        <p>Financial inclusion via VSLA in Lagos (ICHSSA‑2).</p>
+        <ul class="links">
+          <li><img src="https://www.google.com/s2/favicons?domain=facebook.com&sz=32" alt=""> <a href="https://web.facebook.com/arfhng/posts/icasa2023we-are-pleased-to-announce-that-elijah-o-idoko-our-director-of-strategi/748656727301552/?_rdc=1&_rdr#" target="_blank" rel="noopener">Conference post</a></li>
+        </ul>
+      </div>
+      <div class="sub">
+        <h4 style="margin:0 0 .4rem">CUGH 2021</h4>
+        <div class="tags"><span class="tag research">Research</span><span class="tag conference">Conference</span></div>
+        <p>Design &amp; implementation challenges of Nigeria's NHIS — qualitative study (conference presentation).</p>
+      </div>
+      <div class="sub">
+        <h4 style="margin:0 0 .4rem">Health Systems Accelerator 2023 (R4D)</h4>
+        <div class="tags"><span class="tag case">Case study</span><span class="tag award">Award</span></div>
+        <p>Case competition winners: multisectoral OVC plan &amp; embedded case managers (ARFH Experience).</p>
+        <ul class="links">
+          <li><img src="https://www.google.com/s2/favicons?domain=acceleratehss.org&sz=32" alt=""> <a href="https://www.acceleratehss.org/2023-usaid-health-systems-strengthening-case-competition/winners/" target="_blank" rel="noopener">Winners page</a></li>
+        </ul>
+      </div>
     </div>
   </section>
 
