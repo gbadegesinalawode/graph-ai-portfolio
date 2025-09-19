@@ -84,6 +84,11 @@
     .links a{color:var(--accent); font-weight:800; text-decoration:none}
     .links a:hover{text-decoration:underline}
 
+    /* FORM EMBED */
+    .form-embed{width:100%;}
+    .form-embed iframe{width:100%; max-width:100%; border:0; height:820px;}
+    @media (max-width:600px){.form-embed iframe{height:920px}}
+
     /* MODULES */
     .modules{display:grid; grid-template-columns: repeat(auto-fit,minmax(230px,1fr)); gap:16px; margin-top:16px}
     .module{background:#fff; border:1px solid var(--line); border-radius:14px; padding:16px; box-shadow:var(--shadow)}
@@ -116,6 +121,7 @@
       <a href="#about">About</a>
       <a href="#course">Course</a>
       <a href="#submissions">Submissions</a>
+      <a href="#contact">Consultation</a>
       <a href="#media">Media &amp; Publications</a>
       <a class="btn ghost" href="sandbox:/mnt/data/Generative AI for Work & Research Productivity Brochure (2).pdf" target="_blank" rel="noopener">Brochure</a>
       <div class="avatar" aria-label="Portrait of Gbadegesin Alawode">
@@ -319,6 +325,16 @@
         <ul class="links">
           <li><img src="https://www.google.com/s2/favicons?domain=acceleratehss.org&sz=32" alt=""> <a href="https://www.acceleratehss.org/2023-usaid-health-systems-strengthening-case-competition/winners/" target="_blank" rel="noopener">Winners page</a></li>
         </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT FOR CONSULTATION -->
+  <section id="contact" class="section" style="background:#fff; border-top:1px solid var(--line); border-bottom:1px solid var(--line)">
+    <h2>Contact for Consultation</h2>
+    <div class="card">
+      <div class="form-embed">
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScevuBRoGF6zzrJ8R6T7tEk5O1Vt3X6YK6YYzLy-wZ-mbU6FQ/viewform?embedded=true" width="100%" height="776" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
       </div>
     </div>
   </section>
