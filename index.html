@@ -100,6 +100,9 @@
     .sub a:hover{text-decoration:underline}
 
     /* FOOTER */
+    .flyer{display:grid; place-items:center}
+    .flyer img{max-width:100%; height:auto; border-radius:16px; border:1px solid var(--line); box-shadow:var(--shadow)}
+
     footer{padding:36px 22px; text-align:center; color:var(--muted); border-top:1px solid var(--line); background:#fff}
 
     /* RESPONSIVE */
@@ -339,6 +342,17 @@
     </div>
   </section>
 
+  <!-- UPCOMING SHOWCASE EVENT -->
+  <section id="showcase" class="section" style="background:#fff; border-top:1px solid var(--line); border-bottom:1px solid var(--line)">
+    <h2>Upcoming Showcase Event</h2>
+    <div class="card">
+      <p class="lead" style="margin-top:0">Join me as I present highlights from my Generative AI for Work &amp; Research capstone and weekly projects.</p>
+      <div class="flyer">
+        <img src="https://github.com/gbadegesinalawode/graph-ai-portfolio/blob/main/Graph%20Courses.png?raw=true" alt="Promotional flyer for upcoming showcase event" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
   <footer>
     © <span id="year"></span> Gbadegesin O. Alawode — Generative AI Portfolio
   </footer>
@@ -347,8 +361,9 @@
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
   
-    <script src="https://cdn.botpress.cloud/webchat/v3.3/inject.js"></script>
+
+<script src="https://cdn.botpress.cloud/webchat/v3.3/inject.js"></script>
 <script src="https://files.bpcontent.cloud/2025/09/07/17/20250907175305-4RMX5PR4.js" defer></script>
-    
+
 </body>
 </html>
